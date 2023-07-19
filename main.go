@@ -1,6 +1,7 @@
 package main
 
 import (
+	"MyGin/api"
 	"fmt"
 	"github.com/bytedance/sonic"
 	"github.com/gin-gonic/gin"
@@ -84,6 +85,13 @@ func addPathQuery(router *gin.Engine) {
 	router.POST("/form", _postForm)
 	router.POST("/raw", raw)
 
+	// 请求方式
+	router.GET("/articles", api.GetList)
+	router.GET("/articles/:id", api.GetInfo)
+
+	router.PUT("/articles/:id", api.Update)
+	router.POST("/articles", api.Create)
+	router.DELETE("/articles/:id", api.Delete)
 }
 func main() {
 	engine := gin.Default()
