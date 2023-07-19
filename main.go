@@ -92,6 +92,11 @@ func addPathQuery(router *gin.Engine) {
 	router.PUT("/articles/:id", api.Update)
 	router.POST("/articles", api.Create)
 	router.DELETE("/articles/:id", api.Delete)
+
+	router.POST("/upload", api.Upload)
+	router.POST("/uploads", api.Uploads)
+	router.GET("/download", api.Download)
+
 }
 func main() {
 	engine := gin.Default()
