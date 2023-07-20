@@ -2,8 +2,6 @@ package main
 
 import (
 	"MyGin/api"
-	"MyGin/core"
-	"MyGin/model"
 	"MyGin/util"
 	"fmt"
 	"github.com/bytedance/sonic"
@@ -87,7 +85,6 @@ func addPathQuery(router *gin.Engine) {
 	router.GET("/param/:userid/:bookid", param)
 	router.POST("/form", _postForm)
 	router.POST("/raw", raw)
-	router.POST("/users", CreateUser)
 	// 请求方式
 	router.GET("/articles", api.GetList)
 	router.GET("/articles/:id", api.GetInfo)
@@ -102,17 +99,6 @@ func addPathQuery(router *gin.Engine) {
 
 }
 
-func CreateUser(context *gin.Context) {
-	var user model.UserModel
-	err := context.ShouldBindJSON(&user)
-	if err != nil {
-		errMsg := util.CustomizeFailMessage(err, &user)
-		context.JSON(http.StatusBadRequest, core.Fail(http.StatusBadRequest, errMsg))
-		return
-	}
-	context.JSON(http.StatusOK, core.Success(user))
-
-}
 func main() {
 	engine := gin.Default()
 	load(engine)
