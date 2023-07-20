@@ -2,6 +2,7 @@ package main
 
 import (
 	"MyGin/api"
+	"MyGin/log"
 	"MyGin/util"
 	"fmt"
 	"github.com/bytedance/sonic"
@@ -100,6 +101,7 @@ func addPathQuery(router *gin.Engine) {
 }
 
 func main() {
+	log.Initlog()
 	engine := gin.Default()
 	load(engine)
 	//自定义验证器
