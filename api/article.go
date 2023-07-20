@@ -50,8 +50,10 @@ func Update(c *gin.Context) {
 func Create(c *gin.Context) {
 	var article model.ArticleModel
 
-	err := util.BindJson(c, &article)
+	err := c.ShouldBindJSON(&article)
 	if err != nil {
+		errMsg := util.CustomizeFailMessage(err, &article)
+		c.JSON(http.StatusBadRequest, core.Fail(http.StatusBadRequest, errMsg))
 		return
 	}
 	resp := server.CreateService(article)
