@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func Initlog() {
+func init() {
 	file, err := os.Create("D:\\CodeProjects\\logs\\gin\\gin.log")
 	if err != nil {
 		fmt.Println(err.Error())

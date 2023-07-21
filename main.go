@@ -2,8 +2,8 @@ package main
 
 import (
 	"MyGin/api"
-	"MyGin/log"
-	"MyGin/util"
+	"MyGin/db"
+	_ "MyGin/log"
 	"fmt"
 	"github.com/bytedance/sonic"
 	"github.com/gin-gonic/gin"
@@ -101,16 +101,18 @@ func addPathQuery(router *gin.Engine) {
 }
 
 func main() {
-	log.Initlog()
-	engine := gin.Default()
-	load(engine)
-	//自定义验证器
-	util.CustomValidator()
-	api.AddMiddleWare(engine)
-	addPathReturn(engine)
-	addPathQuery(engine)
-	api.AddRouterGroup(engine)
-	engine.Run(":8080")
+	//engine := gin.Default()
+	//load(engine)
+	////自定义验证器
+	//util.CustomValidator()
+	//api.AddMiddleWare(engine)
+	//addPathReturn(engine)
+	//addPathQuery(engine)
+	//api.AddRouterGroup(engine)
+	//engine.Run(":8080")
+
+	//model.OrmTransaction()
+	db.CRUD_Redis()
 }
 
 // 重定向
