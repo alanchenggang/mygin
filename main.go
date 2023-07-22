@@ -2,8 +2,8 @@ package main
 
 import (
 	"MyGin/api"
-	"MyGin/db"
 	_ "MyGin/log"
+	"MyGin/model"
 	"fmt"
 	"github.com/bytedance/sonic"
 	"github.com/gin-gonic/gin"
@@ -112,7 +112,7 @@ func main() {
 	//engine.Run(":8080")
 
 	//model.OrmTransaction()
-	db.CRUD_Redis()
+	model.OrmM2M()
 }
 
 // 重定向

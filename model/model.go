@@ -181,11 +181,13 @@ func OrmM2M() {
 	var grils []GirlGod
 	//GLOBAL_DB.Model(&d).Preload("Dogs.Info").Association("GirlGods").Find(&grils)
 	// 只查询钱数大于100的舔狗
-	GLOBAL_DB.Model(&d).Preload("Dogs", func(db *gorm.DB) *gorm.DB {
-		return db.Joins("Info").Where("money > ?", 100)
-	}).Association("GirlGods").Find(&grils)
+	GLOBAL_DB.Model(&d).Preload("Dogs", queryMoney).Association("GirlGods").Find(&grils)
 
 	fmt.Println(grils)
+}
+
+func queryMoney(db *gorm.DB) *gorm.DB {
+	return db.Joins("Info").Where("money > ?", 100)
 }
 
 type TMG struct {
@@ -204,6 +206,7 @@ func OrmTransaction() {
 		tx.Create(&TMG{
 			Name: "aaa",
 		})
+
 		tx.Create(&TMG{
 			Name: "eee",
 		})
@@ -218,6 +221,9 @@ func OrmTransaction() {
 func createTableifNotExists(obj any, db *gorm.DB) {
 	migrator := db.Migrator()
 	if !migrator.HasTable(&obj) {
-		migrator.CreateTable(&obj)
+		err := migrator.CreateTable(&obj)
+		if err != nil {
+			return
+		}
 	}
 }
