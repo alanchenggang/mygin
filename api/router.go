@@ -1,11 +1,11 @@
 package api
 
 import (
-	"MyGin/core"
-	"MyGin/model"
-	"MyGin/util"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"mygin/core"
+	"mygin/model"
+	"mygin/util"
 	"net/http"
 )
 

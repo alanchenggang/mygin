@@ -1,10 +1,10 @@
 package server
 
 import (
-	"MyGin/core"
-	"MyGin/model"
-	"MyGin/util"
 	"fmt"
+	"mygin/core"
+	"mygin/model"
+	"mygin/util"
 )
 
 func GetListService() core.Response {

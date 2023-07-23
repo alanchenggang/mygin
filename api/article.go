@@ -1,12 +1,12 @@
 package api
 
 import (
-	"MyGin/core"
-	"MyGin/model"
-	"MyGin/server"
-	"MyGin/util"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"mygin/core"
+	"mygin/model"
+	"mygin/server"
+	"mygin/util"
 	"net/http"
 	"strconv"
 )

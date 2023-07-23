@@ -1,9 +1,9 @@
 package db
 
 import (
-	"MyGin/log"
 	"context"
 	"github.com/redis/go-redis/v9"
+	"mygin/log"
 	"strconv"
 	"time"
 )
